@@ -1,0 +1,227 @@
+define({ "api": [
+  {
+    "type": "post",
+    "url": "/login",
+    "title": "Login",
+    "group": "Auth",
+    "name": "Make_Login",
+    "description": "<p>Make Login</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "email",
+            "optional": false,
+            "field": "email",
+            "description": "<p>required The email</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "password",
+            "optional": false,
+            "field": "password",
+            "description": "<p>required The password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\"data\":{\"id\":1,\"name\":\"Admin\",\"email\":\"admin@admin.com\",\"image\":\"http:\\/\\/localhost:8000\\/uploads\\/users\\/IMG_1769.JPG-2501609361065.JPG\"},\"token\":\"1|NR4U1brRQlCoOkpKEsER1iX13qbYQuVRqE4y4QAx\"}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\"data\":{\"message\":\"These credentials do not match our records.\",\"status_code\":401}}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/Api/Auth/AuthController.php",
+    "groupTitle": "Auth"
+  },
+  {
+    "type": "post",
+    "url": "/signup",
+    "title": "Signup",
+    "group": "Auth",
+    "name": "Make_Register",
+    "description": "<p>Make Register</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "name",
+            "description": "<p>required The name</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "email",
+            "optional": false,
+            "field": "email",
+            "description": "<p>required The email</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "password",
+            "optional": false,
+            "field": "password",
+            "description": "<p>required The password</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "password",
+            "optional": false,
+            "field": "password_confirmation",
+            "description": "<p>required The password confirmation</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "image",
+            "optional": false,
+            "field": "image",
+            "description": "<p>required The image</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\"data\":{\"id\":1,\"name\":\"Admin\",\"email\":\"admin@admin.com\",\"image\":\"http:\\/\\/localhost:8000\\/uploads\\/users\\/IMG_1769.JPG-2501609361065.JPG\"},\"token\":\"1|NR4U1brRQlCoOkpKEsER1iX13qbYQuVRqE4y4QAx\"}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/Api/Auth/AuthController.php",
+    "groupTitle": "Auth"
+  },
+  {
+    "type": "post",
+    "url": "/follow",
+    "title": "Follow User",
+    "group": "Follower",
+    "name": "Make_Follow",
+    "description": "<p>Make Follow to User</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "integer",
+            "optional": false,
+            "field": "user_id",
+            "description": "<p>required The user that you will follow</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\"data\":{\"message\":\"Followed Successfully\",\"data\":null,\"status_code\":200}}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\"data\":{\"message\":\"You have already followed this user\",\"status_code\":400}}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/Api/Followers/FollowersController.php",
+    "groupTitle": "Follower"
+  },
+  {
+    "type": "Post",
+    "url": "/",
+    "title": "Create Tweet",
+    "group": "Tweets",
+    "name": "Create_Tweet",
+    "description": "<p>Create tweets</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "text",
+            "optional": false,
+            "field": "tweet",
+            "description": "<p>required The text of tweet max 140 character.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\"data\":{\"message\":\"Tweed Added successfully\",\"data\":{\"id\":10,\"tweet\":\"this is my first tweet\",\"user_id\":1,\"created_at\":\"2021-01-01T22:34:02.000000Z\"}}}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/Api/Tweets/TweetsController.php",
+    "groupTitle": "Tweets"
+  },
+  {
+    "type": "Get",
+    "url": "/",
+    "title": "Get Tweets",
+    "group": "Tweets",
+    "name": "Get_Tweets",
+    "description": "<p>Get tweets of followers users</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "integer",
+            "optional": false,
+            "field": "page",
+            "description": "<p>required The page number from 1.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "integer",
+            "optional": false,
+            "field": "limit",
+            "description": "<p>number of items from 1 to 500.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\"data\":[{\"id\":7,\"tweet\":\"this is my first tweet\",\"user_id\":2,\"created_at\":\"2021-01-01T22:30:30.000000Z\"}]}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/Http/Controllers/Api/Tweets/TweetsController.php",
+    "groupTitle": "Tweets"
+  }
+] });
